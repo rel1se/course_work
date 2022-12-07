@@ -1,0 +1,689 @@
+
+h2 {
+    vertical-align: center;
+    text-align: center;
+  }
+html, 
+body {
+  margin: 0;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+}
+  
+* {
+  font-family: "Helvetica";
+  box-sizing: border-box;
+}
+    
+  /* Дизайн Шапки + Меню Бургер */
+
+
+.top-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  color: white;
+  height: 112px;
+  padding: 1em;
+  border-bottom: solid 1px #777;
+}
+  
+.menu {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+  /* Дизайн кнопок*/
+  
+.button-18 {
+  font-size: 26px;
+  font-weight: 600;
+  color:black;
+  text-decoration: none; 
+  line-height: 1.5; 
+  display:inline-block;
+  text-align: center;
+}
+.menu li{
+  display: flex;
+  color:black;
+  padding: 2px 15px;
+  flex-direction: column;
+}
+.button-18::after{
+  display: block; 
+  content: ""; 
+  height: 2px; 
+  width: 0%; 
+  background-color: rgba(255, 0, 0, 0.747); 
+  transition: width 0.4s ease-in-out;
+}
+.button-18:hover{
+  color:rgba(255, 0, 0, 0.747);
+  width: 100%;
+}
+.button-18:hover::after,
+.button-18:focus::after{
+  width: 100%;
+}
+
+.menu > li {
+  margin: 0 1rem;
+  overflow: hidden;
+}
+.menu-button-container {
+  display: none;
+  height: 100%;
+  width: 30px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+  #menu-toggle {
+  display: none;
+}
+.menu-button,
+.menu-button::before,
+.menu-button::after {
+  display: block;
+  background-color: black;
+  position: absolute;
+  height: 4px;
+  width: 30px;
+  transition: transform 0.4s ease-in-out;
+}
+  .menu-button::before {
+  content: '';
+  margin-top: -8px;
+}
+.menu-button::after {
+  content: '';
+  margin-top: 8px;
+}
+
+  #menu-toggle:checked + .menu-button-container .menu-button::before {
+  margin-top: 0px;
+  transform: rotate(405deg);
+}
+#menu-toggle:checked + .menu-button-container .menu-button {
+  background: rgba(255, 255, 255, 0);
+}
+#menu-toggle:checked + .menu-button-container .menu-button::after {
+  margin-top: 0px;
+  transform: rotate(-405deg);
+}
+
+/* Дизайн блока с галереей и характеристиками */
+ 
+.container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+}
+.all{
+  position: relative;
+}
+
+/* Дизайн галлереи-слайдера */
+
+
+#slider { 
+  position: relative;
+	text-align: center;
+  top: 10px;
+}
+
+#slider{
+	margin: 0 auto;
+}
+
+#slides article{ 
+	width: 20%;
+	float: left;
+}
+
+#slides .image{ 
+	width: 500%;
+	line-height: 0;
+}
+
+#overflow{ 
+	width: 100%;
+	overflow: hidden;
+}
+
+article img{ 
+	width: 100%;
+  border-radius: 3%;
+}
+
+#desktop:checked ~ #slider{ 
+	max-width: 960px; 
+}
+
+#switch1:checked ~ #controls label:nth-child(5), 
+#switch2:checked ~ #controls label:nth-child(1),
+#switch3:checked ~ #controls label:nth-child(2),
+#switch4:checked ~ #controls label:nth-child(3),
+#switch5:checked ~ #controls label:nth-child(4){
+	background: url('cars/prev.png') no-repeat;
+	float: left;
+	display: block;
+	height: 68px;
+	width: 68px;
+  margin-left:5%;
+} 
+#switch1:checked ~ #controls label:nth-child(2), 
+#switch2:checked ~ #controls label:nth-child(3),
+#switch3:checked ~ #controls label:nth-child(4),
+#switch4:checked ~ #controls label:nth-child(5),
+#switch5:checked ~ #controls label:nth-child(1){
+	background: url('cars/next.png') no-repeat;
+	float: right;
+	display: block;
+	height: 68px;
+	width: 68px;
+  margin-right:5%;
+  margin-bottom: 10%;
+}
+
+label, a{ 
+	cursor: pointer;
+}
+
+.all input{
+	display: none;
+}
+
+#switch1:checked ~ #slides .image{
+	margin-left: 0;
+}
+
+#switch2:checked ~ #slides .image{
+	margin-left: -100%;
+}
+
+#switch3:checked ~ #slides .image{
+	margin-left: -200%;
+}
+
+#switch4:checked ~ #slides .image{
+	margin-left: -300%;
+}
+
+#switch5:checked ~ #slides .image{
+	margin-left: -400%;
+}
+
+#controls{ 
+	margin: -25% 0 0 0;
+	width: 100%;
+	height: 50px;
+}
+
+#active label{ 
+	border-radius: 10px; 
+	display: inline-block; 
+	width: 15px;
+	height: 15px;
+	background: #bbb;
+  margin-bottom: 10px;
+}
+
+#active{ 
+	margin: 23% 0 0;
+	text-align: center;
+}
+
+#active label:hover{ 
+	background: #e91111;
+	border-color: #777 !important; 
+}
+#switch1:checked ~ #active label:nth-child(1),
+#switch2:checked ~ #active label:nth-child(2),
+#switch3:checked ~ #active label:nth-child(3),
+#switch4:checked ~ #active label:nth-child(4),
+#switch5:checked ~ #active label:nth-child(5){
+	background: #dd1818;
+	border-color: #dd1818 !important;
+}
+
+#slides .image{ 
+	transition: all 800ms cubic-bezier(0.770, 0.000, 0.175, 1.000);
+}
+
+#controls label:hover{ 
+	opacity: 0.6;
+}
+
+#controls label{ 
+	transition: opacity 0.3s ease-in-out;
+}
+
+
+
+
+/*   Дизайн списка характеристик   */
+
+
+.about
+{
+  margin-left: 10rem;
+
+}
+
+.about h3
+{
+  margin-bottom: 1em;
+  font-size: 4em;
+}
+
+.about_list_item
+{
+  list-style-type: none;
+  border-bottom: rgb(134, 134, 134) solid 1px;
+  margin:1em;
+}
+
+.lists_wrapper
+{
+  display: flex;
+  flex: row;
+  font-size: 1.25rem;
+  color:rgb(134, 134, 134)
+}
+
+.descr_list_item
+{
+  list-style-type:none;
+  font-size: 1.25rem;
+  margin:1em;
+  color: black;
+  font-weight: bolder;
+  border-bottom: black solid 1px;
+}
+
+
+
+/* Дизайн блока с видео и текстом */
+
+
+
+.content-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: stretch;
+  background-color: black;
+  margin-top: 5rem;
+}
+.text-container{
+  text-align: left;
+  color: white;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  width: 40%;
+
+}
+.text-container h3{
+  text-align: center;
+  margin-bottom: 1em;
+  font-size: 3em;
+}
+.video_item{
+  margin-left: 20rem;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+.video_item video{
+  border-radius: 5%;
+}
+
+
+/* Дизайн скролл видео и текста */
+
+.scroll_container{
+  display: flex;
+  width: 100%;
+  height: 100%;
+  background: url(cars/macan_gallery/macan_scroll.jpg) no-repeat;
+  background-size: 100%;
+}
+.scroll_text{
+  margin-left: 5rem;
+  margin-top: 40rem;
+  color:white;
+  font-size: 1.5rem;
+}
+.scroll_title{
+  text-align: left;
+  margin-bottom: 1em;
+  font-size: 3em;
+  transform: translate(0px, 130%);
+  opacity: 0;
+  transition: all 1s ease 0s;
+}
+.scroll_info{
+  transform: translate(0px, 130%);
+  opacity: 0;
+  transition: all 1s ease 0s;
+  line-height: 1.5;
+}
+.scroll_title._active{
+  transform: translate(0px, 0px);
+  opacity: 1;
+}
+.scroll_info._active{
+  transform: translate(0px, 0px);
+  opacity: 1;
+}
+
+/* Дизайн footer-а */
+
+
+.footer{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background-color: #333;
+  color:white;
+}
+.text_footer{
+  display: flex;
+  flex-direction: row;
+  font-size: 1.25rem;
+  width: 80%;
+  font-weight: bold;
+}
+.footer_link{
+  font-weight: bold;
+  text-decoration: underline 1px white;
+  color:white;
+  margin: 0 3px;
+}
+.footer_link:hover{
+  text-decoration: none;
+  transition: 0.5s easy-in-out;
+  color:#dd1818
+}
+.socials{
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+}
+.socials h3{
+  font-size: 1.5rem;
+}
+.footer__img__container{
+  display: flex;
+  flex-direction: row;
+}
+.footer__img{
+  background-color: #444;
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 0 5px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.footer__img img{
+  margin-left:8px;
+  width: 70%;
+  height: 70%;
+}
+.footer__img_youtube:hover{
+  background-color: rgb(204, 0, 0);
+}
+.footer__img_twitter:hover{
+  background-color: rgb(4, 163, 211);
+}
+.footer__img_whatsapp:hover{
+  background-color: rgb(77, 148, 7);
+}
+@media (max-width: 991px){
+  .button-18{
+    color:white;
+  }
+  .menu-button-container {
+    display: flex;
+    z-index:2;
+  }
+  .menu-img{
+    z-index: -100;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 110px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    z-index:3;
+    border: 1px solid #333;
+    height: 4em;
+    padding: 1em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0.9;
+  }
+  #menu-toggle:checked ~ .menu li img{
+    display: none;
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+  .base{
+    margin-left: 30%;
+  }
+  .container{
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+  .all{
+    margin-right: 0%;
+  }
+  .about
+  {
+    margin-left: 0rem;
+  }
+  .about h3
+  {
+    margin-bottom: 1em;
+    font-size: 3rem;
+    margin-left:9rem;
+  }
+  article img{ 
+    border-radius: 0%;
+  }
+  .content-container{
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+  }
+  .video_item{
+    margin-left: 0;
+    margin-top: 0;
+  }
+  .video_item video{
+    border-radius: 5%;
+    width: 768px;
+    height: 432px;
+  }
+  .text-container{
+    font-size: 1.5rem;
+    line-height: 1.5;
+    width: 85%;
+  }
+  .text-container h3{
+    text-align: left;
+  }
+  .scroll_container{
+    display: flex;
+    background: url(cars/macan_gallery/macan_scroll2.jpeg) no-repeat;
+    background-size: cover;
+  }
+  .scroll_text{
+    margin-left: 1rem;
+    margin-top: 37rem;
+    color:white;
+    font-size: 1rem;
+  }
+  .text_footer{
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+@media (max-width: 767px) {
+  .menu-button-container {
+    display: flex;
+    z-index:2;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    margin-top: 112px;
+    left: 0;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
+  #menu-toggle ~ .menu li {
+    height: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  #menu-toggle:checked ~ .menu li {
+    z-index:3;
+    border: 1px solid #333;
+    height: 4em;
+    padding: 1em;
+    transition: height 400ms cubic-bezier(0.23, 1, 0.32, 1);
+    opacity: 0.9;
+  }
+  .menu > li {
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0.5em 0;
+    width: 100%;
+    color: white;
+    background-color: #222;
+  }
+  .menu > li:not(:last-child) {
+    border-bottom: 1px solid #444;
+  }
+  .base{
+    margin-left: 30%;
+  }
+  #switch1:checked ~ #controls label:nth-child(5), 
+  #switch2:checked ~ #controls label:nth-child(1),
+  #switch3:checked ~ #controls label:nth-child(2),
+  #switch4:checked ~ #controls label:nth-child(3),
+  #switch5:checked ~ #controls label:nth-child(4){
+    background: url('cars/prev2.png')no-repeat;
+    float: left;
+    display: block;
+    height: 30px;
+    width: 30px;
+    margin-left:5%;
+  } 
+  #switch1:checked ~ #controls label:nth-child(2), 
+  #switch2:checked ~ #controls label:nth-child(3),
+  #switch3:checked ~ #controls label:nth-child(4),
+  #switch4:checked ~ #controls label:nth-child(5),
+  #switch5:checked ~ #controls label:nth-child(1){
+    background: url('cars/next2.png') no-repeat;
+    float: right;
+    display: block;
+    height: 30px;
+    width: 30px;
+      margin-right:5%; 
+  }
+  .all{
+    margin-right: 0%;
+  }
+  .about
+  {
+    align-items: center;
+    margin-left: 0rem;
+  }
+  .about h3
+  {
+    margin-bottom: 1em;
+    font-size: 2rem;
+    margin-left:5rem;
+  }
+  .lists_wrapper
+  {
+    display: flex;
+    flex: row;
+    font-size: 1rem;
+    color:rgb(134, 134, 134)
+  }
+
+  .descr_list_item
+  {
+    list-style-type:none;
+    font-size: 1rem;
+    margin:1em;
+    color: black;
+    font-weight: bolder;
+  }
+  .text-container{
+    font-size: 1.25rem;
+    line-height: 1.5;
+    width: 85%;
+  }
+  .text-container h3{
+    text-align: left;
+  }
+  .video_item video{
+    border-radius: 5%;
+    width: 512px;
+    height: 288px;
+  }
+}
+@media (max-width: 512px){
+  .video_item video{
+    border-radius: 5%;
+    width: 256px;
+    height: 144px;
+  }
+}
